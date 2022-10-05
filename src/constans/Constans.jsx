@@ -1,27 +1,27 @@
-const VERDANA = `'Verdana'`;
-const GOTHAM_PRO = `'Gotham Pro'`;
+const MONTSERRAT = `'Montserrat'`;
 
 export const Constants = {
   fonts: {
-    verdana: VERDANA,
-    gothamPro: GOTHAM_PRO,
+    $monts: MONTSERRAT,
+  },
+
+  fontSize: {
+    montsSize: '12',
+    montsHeroSize: '16',
   },
 
   lineHeight: {
-    verdanaHeight: '1.2',
-    gothamProHeight: '0.9',
+    montsHeight: '0.9',
   },
 
   colors: {
     $white: '#FFFFFF',
-    $orange: '#FC842D',
-    $blue: '#264061',
-    $lightGrey: '#F0F1F3',
-    $grey: '#9B9FAA',
-    $black: '#212121',
-    borderColor: '#E0E0E0',
-    $yellow: '#ffff00',
-    $red: '#ff0000',
+    $blue: '#003094',
+    $green: '#009231',
+    $red: '#B70000',
+    $violet: '#74009C',
+    $lightGrey: '#B4B4B4',
+    $black: '#000000',
   },
 
   spacing: value => `${4 * value}px`,

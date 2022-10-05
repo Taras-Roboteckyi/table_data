@@ -1,17 +1,19 @@
-import { useEffect } from 'react';
+/* import { useEffect } from 'react'; */
 
-import HeroSection from '../components/HeroSection/HeroSection';
+import SideBar from '../components/SideBar/SideBar';
 
 import { Form } from '../components/Form/Form';
 import MatrixTable from '../components/TableMatrix/MartixTable';
 
+import { Container } from './HomePage.styled';
+
 export default function HomePage() {
   return (
-    <>
-      <HeroSection />
-      <Form />
+    <Container>
+      <SideBar />
+      {/* <Form /> */}
 
-      {/* data.row && */ <MatrixTable />}
-    </>
+      {/* {data.row && <MatrixTable />} */}
+    </Container>
   );
 }
