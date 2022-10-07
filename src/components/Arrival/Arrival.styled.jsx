@@ -8,6 +8,7 @@ export const Container = styled.div`
 
 export const ContainerArrival = styled.div`
   display: flex;
+  margin-bottom: 15px;
   /*  justify-content: space-between; */
 `;
 

@@ -46,41 +46,50 @@ export const Form = () => {
   return (
     <Section>
       <form onSubmit={formik.handleSubmit} className="form">
-        <button className="button" type="button" /* onClick={onLoginClick} */>
-          Приход +
-        </button>
+        <div className="border-container">
+          <button className="button" type="button" /* onClick={onLoginClick} */>
+            Приход +
+          </button>
+        </div>
         <button className="buttonTwo" type="button" /* onClick={onLoginClick} */>
           Дублировать приход
         </button>
         <div className="container">
-          <button className="buttonThree" type="button" /* onClick={onLoginClick} */>
+          <button className="buttonTwo buttonThree" type="button" /* onClick={onLoginClick} */>
             Провести
           </button>
-          <button className="buttonThree" type="button" /* onClick={onLoginClick} */>
+          <button className="buttonTwo buttonThree" type="button" /* onClick={onLoginClick} */>
             На удаление
           </button>
         </div>
         <div className="container">
-          <button className="buttonFour" type="button" /* onClick={onLoginClick} */>
+          <button className="buttonTwo buttonFour" type="button" /* onClick={onLoginClick} */>
             В списание
           </button>
-          <button className="buttonFour" type="button" /* onClick={onLoginClick} */>
+          <button className="buttonTwo buttonFour" type="button" /* onClick={onLoginClick} */>
             В перемещение
           </button>
         </div>
         <button className="buttonTwo" type="button" /* onClick={onLoginClick} */>
           Возвраты поставщику по приходу
         </button>
-        <div className="container">
-          <button className="buttonFive" type="button" /* onClick={onLoginClick} */>
-            Импорт
-          </button>
-          <button className="buttonFive" type="button" /* onClick={onLoginClick} */>
-            Экспорт
-          </button>
-          <button className="buttonFive" type="button" /* onClick={onLoginClick} */>
-            Печать
-          </button>
+
+        <div className="container-buttons">
+          <div className="border-container">
+            <button className=" button buttonFive" type="button" /* onClick={onLoginClick} */>
+              Импорт
+            </button>
+          </div>
+          <div className="border-container">
+            <button className="button buttonFive" type="button" /* onClick={onLoginClick} */>
+              Экспорт
+            </button>
+          </div>
+          <div className="border-container">
+            <button className="button buttonFive" type="button" /* onClick={onLoginClick} */>
+              Печать
+            </button>
+          </div>
         </div>
         <div className="container-input">
           <input
@@ -96,7 +105,6 @@ export const Form = () => {
           />
           <img src={vector} className="image-input" alt="Dandruff" width={'12px'} height={'12px'} />
         </div>
-
         {/*     <div className="container-input">
           <label className="label-input">
             <input
@@ -126,7 +134,6 @@ export const Form = () => {
             />
           </label>
         </div> */}
-
         {/*  <div className="buttons">
           <button className="button" type="submit" onClick={onLoginClick}>
             Створити матрицю
