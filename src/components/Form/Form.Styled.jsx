@@ -139,7 +139,7 @@ export const Section = styled.div`
     margin-top: 7px;
     border-radius: 5px;
     padding-left: 10px;
-    border: 1px solid ${({ theme: { colors } }) => colors.$lightGrey};
+    border: 0.5px solid ${({ theme: { colors } }) => colors.$lightGrey};
 
     background: inherit;
 
