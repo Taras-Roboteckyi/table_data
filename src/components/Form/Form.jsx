@@ -1,9 +1,10 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import vector from '../../images/vector.png';
 import { Section } from './Form.Styled';
 
 export const Form = () => {
-  const validationSchema = Yup.object({
+  /* const validationSchema = Yup.object({
     row: Yup.number()
       .integer('Must be more than 0')
       .max(100, 'Максимальне допустиме число 100!')
@@ -21,7 +22,7 @@ export const Form = () => {
       .min(1, 'Мінімальне допустиме число 1!')
       .max(100, 'Максимальне допустиме число 100!')
       .required("Це поле обов'язкове!"),
-  });
+  }); */
 
   const formik = useFormik({
     initialValues: {
@@ -29,9 +30,9 @@ export const Form = () => {
       column: '',
       range: '',
     },
-    validationSchema,
+    /* validationSchema, */
     onSubmit: async (values, actions) => {
-      /* await dispatch(ItemsSlice.dataForm(values)); */
+      /* console.log(values); */
       actions.resetForm({
         values: {
           row: '',
@@ -44,32 +45,60 @@ export const Form = () => {
 
   return (
     <Section>
-      <h3 className="form-title">Створення матриці</h3>
-
       <form onSubmit={formik.handleSubmit} className="form">
+        <button className="button" type="button" /* onClick={onLoginClick} */>
+          Приход +
+        </button>
+        <button className="buttonTwo" type="button" /* onClick={onLoginClick} */>
+          Дублировать приход
+        </button>
+        <div className="container">
+          <button className="buttonThree" type="button" /* onClick={onLoginClick} */>
+            Провести
+          </button>
+          <button className="buttonThree" type="button" /* onClick={onLoginClick} */>
+            На удаление
+          </button>
+        </div>
+        <div className="container">
+          <button className="buttonFour" type="button" /* onClick={onLoginClick} */>
+            В списание
+          </button>
+          <button className="buttonFour" type="button" /* onClick={onLoginClick} */>
+            В перемещение
+          </button>
+        </div>
+        <button className="buttonTwo" type="button" /* onClick={onLoginClick} */>
+          Возвраты поставщику по приходу
+        </button>
+        <div className="container">
+          <button className="buttonFive" type="button" /* onClick={onLoginClick} */>
+            Импорт
+          </button>
+          <button className="buttonFive" type="button" /* onClick={onLoginClick} */>
+            Экспорт
+          </button>
+          <button className="buttonFive" type="button" /* onClick={onLoginClick} */>
+            Печать
+          </button>
+        </div>
         <div className="container-input">
-          <label className="label-input">
-            Кількість рядків:
-            <input
-              label="first name"
-              name="row"
-              className="form-input"
-              placeholder="К-сть Рядків *"
-              type="number"
-              autoComplete="off"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur('row')}
-              value={formik.values.row}
-            />
-          </label>
-          {formik.touched.row && formik.errors.row ? (
-            <p className="form-input-error">{formik.errors.row}</p>
-          ) : null}
+          <input
+            label="first name"
+            name="row"
+            className="form-input"
+            placeholder="Номер документа, название товара..."
+            type="text"
+            autoComplete="off"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur('row')}
+            value={formik.values.row}
+          />
+          <img src={vector} className="image-input" alt="Dandruff" width={'12px'} height={'12px'} />
         </div>
 
-        <div className="container-input">
+        {/*     <div className="container-input">
           <label className="label-input">
-            Кількість колонок:
             <input
               name="column"
               className="form-input"
@@ -81,14 +110,10 @@ export const Form = () => {
               value={formik.values.column}
             />
           </label>
-          {formik.touched.column && formik.errors.column ? (
-            <p className="form-input-error">{formik.errors.column}</p>
-          ) : null}
         </div>
 
         <div className="container-input">
           <label className="label-input">
-            X-діапазон:
             <input
               name="range"
               className="form-input"
@@ -100,16 +125,13 @@ export const Form = () => {
               value={formik.values.range}
             />
           </label>
-          {formik.touched.range && formik.errors.range ? (
-            <p className="form-input-error">{formik.errors.range}</p>
-          ) : null}
-        </div>
+        </div> */}
 
-        <div className="buttons">
-          <button className="button" type="submit" /* onClick={onLoginClick} */>
+        {/*  <div className="buttons">
+          <button className="button" type="submit" onClick={onLoginClick}>
             Створити матрицю
           </button>
-        </div>
+        </div> */}
       </form>
     </Section>
   );

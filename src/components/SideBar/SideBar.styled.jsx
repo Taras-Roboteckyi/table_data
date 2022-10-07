@@ -6,7 +6,7 @@ export const Container = styled.section`
   padding: 0px 5px;
 `;
 
-export const Title = styled.h1`
+/* export const Title = styled.h1`
   font-family: ${({ theme: { fonts } }) => fonts.$gothamPro};
   font-weight: 700;
   font-style: normal;
@@ -54,3 +54,4 @@ export const Text = styled.p`
   color: ${({ theme: { colors } }) => colors.$black};
   margin-bottom: 10px;
 `;
+ */

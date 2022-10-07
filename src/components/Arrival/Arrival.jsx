@@ -1,10 +1,22 @@
-import { Container } from './Arrival.styled';
-import { Title } from './Arrival.styled';
+import settings from '../../images/settings.png';
+import arrow from '../../images/chevron-left.png';
+
+import { Form } from '../Form/Form';
+
+import { Container, Title, ContainerArrival, Img, Button, ImgArrow } from './Arrival.styled';
 
 export default function Arrival() {
   return (
     <Container>
-      <Title>Приходы</Title>
+      <ContainerArrival>
+        <Title>Приходы</Title>
+        <Img src={settings} alt="Settings" width={'20px'} height={'20px'} />
+        <Button>
+          <ImgArrow src={arrow} alt="Arrow" width={'10px'} height={'10px'} />
+          Скрыть
+        </Button>
+      </ContainerArrival>
+      <Form></Form>
     </Container>
   );
 }

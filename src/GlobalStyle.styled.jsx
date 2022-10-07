@@ -34,6 +34,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   /*-------------Body--------------*/
   body {
+    font-family: 'Montserrat', sans-serif;
         background-color: #d3d3d3;
     width: 100%;
     height: 100%;
