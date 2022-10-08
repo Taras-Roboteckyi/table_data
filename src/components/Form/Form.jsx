@@ -75,17 +75,17 @@ export const Form = () => {
         </button>
 
         <div className="container-buttons">
-          <div className="border-container">
+          <div className="border-containerTwo">
             <button className=" button buttonFive" type="button" /* onClick={onLoginClick} */>
               Импорт
             </button>
           </div>
-          <div className="border-container">
+          <div className="border-containerTwo">
             <button className="button buttonFive" type="button" /* onClick={onLoginClick} */>
               Экспорт
             </button>
           </div>
-          <div className="border-container">
+          <div className="border-containerTwo">
             <button className="button buttonFive" type="button" /* onClick={onLoginClick} */>
               Печать
             </button>

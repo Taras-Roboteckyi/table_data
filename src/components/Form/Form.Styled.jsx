@@ -123,6 +123,35 @@ export const Section = styled.div`
     justify-content: space-between;
     margin-top: 7px;
   }
+
+  .border-containerTwo {
+    border-radius: 4px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 4px;
+      background: ${({ theme: { options } }) => options.gradient};
+      background-size: 100% 100%;
+      clip-path: polygon(
+        0% 100%,
+        1.5px 100%,
+        1.5px 1.5px,
+        calc(100% - 1.5px) 1.5px,
+        calc(100% - 1.5px) calc(100% - 1.5px),
+        1.5px calc(100% - 1.5px),
+        2px 100%,
+        100% 100%,
+        100% 0%,
+        0% 0%
+      );
+    }
+  }
+
   .buttonFive {
     height: 27px;
     width: 120px;
@@ -145,10 +174,10 @@ export const Section = styled.div`
 
     font-style: normal;
     font-weight: 300;
-    font-size: 10px;
+    font-size: ${({ theme: { fontSize } }) => fontSize.montsSize};
     line-height: 1.21;
     letter-spacing: 0.04em;
-    color: #919090;
+    color: ${({ theme: { colors } }) => colors.$blueDark};
     outline: none;
     transition: border 1s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -157,6 +186,10 @@ export const Section = styled.div`
     }
     &:focus {
       border: 1px solid ${({ theme: { colors } }) => colors.$blueDark};
+    }
+    &::placeholder {
+      font-size: 10px;
+      color: #919090;
     }
   }
 
