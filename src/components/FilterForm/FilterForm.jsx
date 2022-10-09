@@ -3,8 +3,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+
 import { useState } from 'react';
 
+import ToggleSwitch from './ToggleSwitch';
 import calendarIcon from '../../images/calendar-icon.svg';
 import bookmark from '../../images/bookmark-fill.svg';
 
@@ -19,17 +21,56 @@ import {
   InputThree,
   InputFour,
   DivContainer,
+  DivSliderContainer,
   DivContainerButtons,
   ContainerButton,
   Button,
   ButtonSubmit,
   ButtonIcon,
+  ToggleText,
   ImgIcon,
+  StyledSlider,
 } from './FilterForm.styled';
+
+const marks = [
+  {
+    value: 0,
+    label: 'За сегодня',
+  },
+  {
+    value: 25,
+    label: 'За прошлую неделю',
+  },
+  {
+    value: 50,
+    label: 'В прошлом месяце',
+  },
+  {
+    value: 75,
+    label: 'В прошлом году',
+  },
+  {
+    value: 100,
+    label: 'За всё время',
+  },
+];
+
+function valuetext(value) {
+  return `${value}°C`;
+}
+
+function valueLabelFormat(value) {
+  return marks.findIndex(mark => mark.value === value) + 1;
+}
 
 export default function FilterForm() {
   const [date, setDate] = useState(false);
   const [dateNext, setDateNext] = useState(false);
+  const [valueInput, setValueInput] = useState(false);
+  const [dateNow, setDateNow] = useState(false);
+
+  /* const classes = useStyles(); */
+  /* console.log(date); */
 
   /* const validationSchema = Yup.object({
     row: Yup.number()
@@ -67,7 +108,8 @@ export default function FilterForm() {
     },
     /* validationSchema, */
     onSubmit: async (values, actions) => {
-      /* console.log(values); */
+      values = { ...values, date, dateNext,dateNow,valueInput }; //Додаєм нові властивості до форми
+      console.log(values);
       actions.resetForm({
         values: {
           number: '',
@@ -83,8 +125,47 @@ export default function FilterForm() {
           comment: '',
         },
       });
+      setDateNext(false);
+      setDate(false);
+      
     },
   });
+
+  const handleNameChange = (event, value) => {
+    /* event.preventDefault(); */
+
+    const somedate = new Date();
+    setDateNow(somedate); //Сетим теперішню дату
+    setDateNext(false);
+    setDate(false);
+    
+    switch (value) {
+      case 0:
+        setValueInput(somedate);
+        break;
+      case 25:
+        setValueInput(new Date(somedate.getTime() - 7 * 24 * 60 * 60 * 1000));
+        break;
+      case 50:
+        somedate.setMonth(somedate.getMonth() - 1);
+        setValueInput(somedate);
+        break;
+      case 75:
+        setValueInput(new Date(somedate.setFullYear(somedate.getFullYear() - 1)));
+        break;
+      case 100:
+        setValueInput(somedate);
+        break;
+      default:
+        console.log(`Field type name - ${value} is not processed`);
+    }
+  };
+
+  const resetForm = () => {
+    formik.resetForm();
+    setDateNext(false);
+    setDate(false);
+  };
 
   return (
     <Container>
@@ -110,12 +191,27 @@ export default function FilterForm() {
               selected={dateNext}
               onChange={setDateNext}
               minDate={date}
+              maxDate={new Date()}
               className={'calendar'}
               placeholderText={'По'}
             />
             <Img src={calendarIcon} className="calendarIcon" alt="Calendar Icon" />
           </CalendarStyles>
         </CalendarContainer>
+
+        <DivSliderContainer>
+          <StyledSlider
+            defaultValue={50}
+            /* valueLabelFormat={valueLabelFormat}
+            getAriaValueText={valuetext} */
+            aria-labelledby="discrete-slider-restrict"
+            step={null}
+            valueLabelDisplay="off"
+            marks={marks}
+            name="slider"
+            onChange={handleNameChange}
+          />
+        </DivSliderContainer>
 
         <DivContainer>
           <Input
@@ -233,6 +329,17 @@ export default function FilterForm() {
             onBlur={formik.handleBlur('responsible')}
             value={formik.values.responsible}
           />
+          <ToggleText>Отклонения</ToggleText>
+          <div>
+            <ToggleSwitch />
+          </div>
+
+          {/* <FormControlLabel
+            value="start"
+            control={<Switch color="primary" />}
+            label="Отклонения"
+            labelPlacement="start"
+          /> */}
         </DivContainer>
 
         <InputTwo
@@ -250,7 +357,9 @@ export default function FilterForm() {
             <ButtonSubmit type="submit">Применить</ButtonSubmit>
           </ContainerButton>
           <ContainerButton>
-            <Button type="button">Очистить</Button>
+            <Button type="reset" onClick={resetForm}>
+              Очистить
+            </Button>
           </ContainerButton>
           <ContainerButton>
             <ButtonIcon type="button">

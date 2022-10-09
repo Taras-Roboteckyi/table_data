@@ -160,12 +160,14 @@ export const Section = styled.div`
 
   .container-input {
     position: relative;
+    margin-top: 7px;
+    height: 28px;
   }
 
   .form-input {
     height: 28px;
     width: 375px;
-    margin-top: 7px;
+    padding: 0;
     border-radius: 5px;
     padding-left: 10px;
     border: 0.5px solid ${({ theme: { colors } }) => colors.$lightGrey};
@@ -195,7 +197,7 @@ export const Section = styled.div`
 
   .image-input {
     position: absolute;
-    top: 45%;
-    right: 7px;
+    top: 35%;
+    right: 10px;
   }
 `;

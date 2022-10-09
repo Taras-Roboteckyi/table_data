@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+import { withStyles } from '@material-ui/core/styles';
+import Slider from '@material-ui/core/Slider';
 
 export const Container = styled.section`
   /* margin: 0 auto;
@@ -96,6 +98,7 @@ export const Img = styled.img`
 export const DivContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const InputStyles = css`
@@ -124,7 +127,7 @@ const InputStyles = css`
     border: 1px solid ${({ theme: { colors } }) => colors.$blueDark};
   }
   &::placeholder {
-    font-size: 10px;
+    /* font-size: 10px; */
     color: #919090;
   }
 `;
@@ -254,3 +257,44 @@ export const ImgIcon = styled.img`
     }
   }
 `; */
+
+export const ToggleText = styled.p`
+  padding-top: 10px;
+
+  font-family: ${({ theme: { fonts } }) => fonts.$monts};
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: ${({ theme: { lineHeight } }) => lineHeight.montsHeight};
+  letter-spacing: 0.04em;
+`;
+
+export const DivSliderContainer = styled.div`
+  margin-top: 6px;
+`;
+
+export const StyledSlider = withStyles({
+  root: {
+    margin: 0,
+
+    /* background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', */
+  },
+  track: { 
+    width: "40px",
+    background: 'url(../../images/line.png), center, no-repeat',
+  /* backgroundRepeat: no-repeat, */
+  /* backgroundPosition: top center, */
+  },
+  markLabel: {
+    /* textTransform: 'capitalize', */
+    fontFamily: 'Montserrat',
+    fontSize: '8px',
+    paddingBottom: '10px',
+  },
+})(Slider);
