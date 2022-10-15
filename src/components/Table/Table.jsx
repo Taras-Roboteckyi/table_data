@@ -1,13 +1,14 @@
+import { TableBody } from './TableBody';
+
+import { Container, TableHero } from './Table.styled';
 
 
-import { Container, MatrixHead } from './Table.styled';
-
-export default function MatrixTable() {
+export default function Table() {
   return (
     <Container>
-      <MatrixHead>
-        
-      </MatrixHead>
+      <TableHero>
+        <TableBody/>
+      </TableHero>
     </Container>
   );
 }

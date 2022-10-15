@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding-right: 100px;
 `;
 
-export const MatrixHead = styled.table`
+export const TableHero = styled.table`
   border-collapse: collapse;
   margin: auto;
 `;
