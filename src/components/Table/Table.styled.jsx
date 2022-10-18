@@ -1,9 +1,69 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-bottom: 80px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding: 0px 25px;
+`;
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+`;
+
+export const Button = styled.button`
+  width: 305px;
+  /* height: 44px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-family: ${({ theme: { fonts } }) => fonts.$monts};
+  font-weight: 600;
+  font-size: ${({ theme: { fontSize } }) => fontSize.montsSize};
+  line-height: 1.21;
+
+  text-align: center;
+  letter-spacing: 0.04em;
+  background: ${({ theme: { colors } }) => colors.$white};
+
+  box-shadow: ${({ theme: { options } }) => options.buttonShadow};
+  border: none;
+  border-radius: ${({ theme: { options } }) => options.radius};
+  cursor: pointer;
+  /* align-self: center; */
+  /* transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1); */
+  /* &:hover {
+    background: #ff6b08;
+    border-radius: #ff6b08;
+    color: ${prop => prop.theme.colors.$white};
+    box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
+  } */
+`;
+
+export const ButtonItemGreen = styled.span`
+  margin-left: 3px;
+  background: ${({ theme: { colors } }) => colors.$green};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+`;
+
+export const ButtonItemRed = styled.span`
+  margin-left: 3px;
+  background: ${({ theme: { colors } }) => colors.$red};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+`;
+
+export const ButtonItemViolet = styled.span`
+  margin-left: 3px;
+  background: ${({ theme: { colors } }) => colors.$violet};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
 export const TableHero = styled.table`
@@ -11,7 +71,65 @@ export const TableHero = styled.table`
   margin: auto;
 `;
 
-export const TransactionRow = styled.tr`
+export const TableHeadRow = styled.tr`
+  display: flex;
+  padding: 12px 14px;
+  background: #5a8fff10; // 20 - aльфа канал який додає прозорість
+  border-radius: 5px;
+`;
+
+export const TableHeadCheckboxItem = styled.th`
+  /* margin-left: 14px; */
+  margin-right: 14px;
+`;
+
+export const Checkbox = styled.input`
+  margin: 0;
+  /* margin-left: 14px;
+margin-right: 14px;
+padding-top: 14px; */
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  
+`;
+
+export const TableHeadItem = styled.th`
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  margin-right: 27px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: ${({ theme: { fontSize } }) => fontSize.montsSize};
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+`;
+
+export const TableHeadTwoItem = styled.th`
+  display: flex;
+  align-items: center;
+  margin-right: 75px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: ${({ theme: { fontSize } }) => fontSize.montsSize};
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+`;
+
+export const Img = styled.img`
+  margin-left: 3px;
+  width: 10px;
+  height: 10px;
+  display: block;
+`;
+
+export const ImgFilter = styled.img`
+  max-width: fit-content;
+  width: 16px;
+`;
+
+/* export const TransactionRow = styled.tr`
   position: relative;
 
   :nth-child(even) {
@@ -139,3 +257,4 @@ export const Total = styled.td`
   text-align: center;
   background-color: ${({ theme: { colors } }) => colors.$yellow};
 `;
+ */
