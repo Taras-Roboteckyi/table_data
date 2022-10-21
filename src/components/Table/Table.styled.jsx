@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { withStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export const Container = styled.div`
   padding: 0px 25px;
@@ -83,16 +86,22 @@ export const TableHeadCheckboxItem = styled.th`
   margin-right: 14px;
 `;
 
-export const Checkbox = styled.input`
-  margin: 0;
-  /* margin-left: 14px;
-margin-right: 14px;
-padding-top: 14px; */
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  
-`;
+export const FormControlLabelMUI = withStyles({
+  root: {
+    margin: 0,
+    padding: 0,
+  },
+})(FormControlLabel);
+
+export const CheckboxMUI = withStyles({
+  root: {
+    margin: 0,
+    width: 0,
+    height: 0,
+    padding: 0,
+    transform: 'scale(0.65)',
+  },
+})(Checkbox);
 
 export const TableHeadItem = styled.th`
   display: flex;

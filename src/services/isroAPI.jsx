@@ -15,7 +15,7 @@ const key = "ODUxZDZhNmQtOTZiMC00ZmViLTk0ZTYtYTc3NDZhNzRmOWNj";
 export async function fetch() {
   
   const { data } = await axios.get(`https://isro.vercel.app/api/customer_satellites`);
-  console.log(data.customer_satellites)
+  /* console.log(data.customer_satellites) */
 
   //Додаєм нові влстивості до масиву
    let array = [...data.customer_satellites]
@@ -23,7 +23,7 @@ export async function fetch() {
     const time = new Date()
     time.setHours(item, item+1)
     array[item].time = time //Додаєм нову властивість time
-    console.log("(item",item)
+    /* console.log("(item",item) */
     if (0 === item%3 ) {
      array[item].status="Проведен"  //Додаєм нову властивість status
      array[item].comment="Вентиляция налажена"//Додаєм нову властивість comment
@@ -36,9 +36,9 @@ export async function fetch() {
       array[item].status="Записан"  //Додаєм нову властивість status
       array[item].comment="Аппарат исправлен"//Додаєм нову властивість comment
      }
-    console.log("array",2 === item%3)
+    /* console.log("array",2 === item%3) */
   }
-  console.log("array",array)
+ /*  console.log("array",array) */
   return data;
 }
 /* export async function fetch() {
