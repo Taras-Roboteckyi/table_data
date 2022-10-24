@@ -20,29 +20,85 @@ import {
 } from './Table.styled';
 
 export function TableBody() {
+  
+  const [selected, setSelected] = useState([]);
+
+  //////рендер масиву /////////
+  const lineIndex = [
+    {
+      id: 'name',
+      numeric: false,
+      disablePadding: true,
+      label: 'Dessert (100g serving)',
+    },
+    {
+      id: 'calories',
+      numeric: true,
+      disablePadding: false,
+      label: 'Calories',
+    },
+    {
+      id: 'fat',
+      numeric: true,
+      disablePadding: false,
+      label: 'Fat (g)',
+    },
+    {
+      id: 'carbs',
+      numeric: true,
+      disablePadding: false,
+      label: 'Carbs (g)',
+    },
+  ];
+
   //////Логіка чекбоксів///////////
-  const [checked, setChecked] = useState([]);
+  const handleSelectAllClick = event => {
+    if (event.target.checked) {
+      const newSelected = lineIndex.map(n => n.id);
+      
+      setSelected(newSelected);
+      return;
+    }
+    setSelected([]);
+  };
 
- //////рендер масиву /////////
- const lineIndex = [0, 1, 2, 3, 4, 6];
+  const handleClick = (event, name) => {
+    const selectedIndex = selected.indexOf(name);
+    let newSelected = [];
 
-  const handleChange1 = event => {
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      );
+    }
+
+    setSelected(newSelected);
+  };
+
+  const isSelected = name => selected.indexOf(name) !== -1;
+ 
+  /*  const handleChange1 = event => {
     setChecked([event.target.checked]);
     for (var i = 0; i < lineIndex.length; i++) {   
       event.target[i].checked = true;   
   }  
   };
-console.log("checked", )
-  
- /*  const handleChange2 = event => {
+console.log("checked", ) */
+
+  /*  const handleChange2 = event => {
     setChecked([event.target.checked, checked[1]]);
   };
 
   const handleChange3 = event => {
     setChecked([event.target.checked]);
   }; */
-
- 
 
   return (
     <>
@@ -56,6 +112,12 @@ console.log("checked", )
                   /* checked={checked[0] && checked[1]} */
                   /* indeterminate={checked[0] !== checked[1]} */
                   /* onChange={handleChange1} */
+                  indeterminate={selected.length > 0 && selected.length < lineIndex.length}
+                  checked={lineIndex.length > 0 && selected.length === lineIndex.length}
+                  onChange={handleSelectAllClick}
+                  inputProps={{
+                    'aria-label': 'select all desserts',
+                  }}
                 />
               }
             />
@@ -98,12 +160,33 @@ console.log("checked", )
               label="Child 2"
               control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
             /> */}
-        {lineIndex.map((line, index) => (
-          <tr key={index}>{<td><FormControlLabelMUI
-            
-            control={<CheckboxMUI checked={checked[index]} /* onChange={handleChange3} */ />}
-          /></td>}</tr>
-        ))}
+        {lineIndex.map((line, index) => {
+          const isItemSelected = isSelected(line.id);
+          console.log(isItemSelected)
+          return (
+            <tr
+              key={index}
+              onClick={event => handleClick(event, line.id)}
+              /* role="checkbox" */
+              /* aria-checked={isItemSelected} */
+              tabIndex={-1}
+              /* key={lineIndex.name} */
+              selected={isItemSelected}
+            >
+              {
+                <td>
+                  <CheckboxMUI
+                    checked={isItemSelected}
+                    /* onChange={event =>
+                          handleClick(event, line.name)
+                        }  */
+                    /* onChange={handleChange3} */
+                  />
+                </td>
+              }
+            </tr>
+          );
+        })}
       </tbody>
     </>
   );
