@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState} from 'react';
 
 /* import FormControlLabel from '@material-ui/core/FormControlLabel'; */
 /* import Checkbox from '@material-ui/core/Checkbox'; */
@@ -6,6 +6,8 @@ import { useState } from 'react';
 import arrowDown from '../../images/arrow-down.png';
 import arrowUp from '../../images/arrow-up.png';
 import filterImg from '../../images/filter-right.png';
+
+/* import {fetchAPI} from "../../services/isroAPI" */
 
 import { CheckboxMUI, FormControlLabelMUI } from './Table.styled';
 
@@ -22,6 +24,12 @@ import {
 export function TableBody() {
   
   const [selected, setSelected] = useState([]);
+ /*  useEffect(() => {
+    fetchAPI()
+  
+    
+  }, [])
+   */
 
   //////рендер масиву /////////
   const lineIndex = [
@@ -162,7 +170,7 @@ console.log("checked", ) */
             /> */}
         {lineIndex.map((line, index) => {
           const isItemSelected = isSelected(line.id);
-          console.log(isItemSelected)
+          
           return (
             <tr
               key={index}

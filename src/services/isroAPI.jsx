@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 /* axios.defaults.baseURL = 'https://api.m3o.com/v1/user'; */
-const key = "ODUxZDZhNmQtOTZiMC00ZmViLTk0ZTYtYTc3NDZhNzRmOWNj";
+//const key = "ODUxZDZhNmQtOTZiMC00ZmViLTk0ZTYtYTc3NDZhNzRmOWNj";
 
 /* const token = {
   set(token) {
@@ -12,7 +12,7 @@ const key = "ODUxZDZhNmQtOTZiMC00ZmViLTk0ZTYtYTc3NDZhNzRmOWNj";
   },
 }; */
 
-export async function fetch() {
+export async function fetchAPI() {
   
   const { data } = await axios.get(`https://isro.vercel.app/api/customer_satellites`);
   /* console.log(data.customer_satellites) */
