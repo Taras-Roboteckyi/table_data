@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 
 /* import FormControlLabel from '@material-ui/core/FormControlLabel'; */
 /* import Checkbox from '@material-ui/core/Checkbox'; */
@@ -21,18 +21,12 @@ import {
   ImgFilter,
 } from './Table.styled';
 
-export function TableBody() {
-  
+export function TableBody({ data }) {
   const [selected, setSelected] = useState([]);
- /*  useEffect(() => {
-    fetchAPI()
-  
-    
-  }, [])
-   */
 
+  console.log(data);
   //////рендер масиву /////////
-  const lineIndex = [
+  /*  const data = [
     {
       id: 'name',
       numeric: false,
@@ -57,13 +51,13 @@ export function TableBody() {
       disablePadding: false,
       label: 'Carbs (g)',
     },
-  ];
+  ]; */
 
   //////Логіка чекбоксів///////////
   const handleSelectAllClick = event => {
     if (event.target.checked) {
-      const newSelected = lineIndex.map(n => n.id);
-      
+      const newSelected = data.map(n => n.id);
+
       setSelected(newSelected);
       return;
     }
@@ -91,10 +85,10 @@ export function TableBody() {
   };
 
   const isSelected = name => selected.indexOf(name) !== -1;
- 
+
   /*  const handleChange1 = event => {
     setChecked([event.target.checked]);
-    for (var i = 0; i < lineIndex.length; i++) {   
+    for (var i = 0; i < data.length; i++) {   
       event.target[i].checked = true;   
   }  
   };
@@ -120,8 +114,8 @@ console.log("checked", ) */
                   /* checked={checked[0] && checked[1]} */
                   /* indeterminate={checked[0] !== checked[1]} */
                   /* onChange={handleChange1} */
-                  indeterminate={selected.length > 0 && selected.length < lineIndex.length}
-                  checked={lineIndex.length > 0 && selected.length === lineIndex.length}
+                  indeterminate={selected.length > 0 && selected.length < data.length}
+                  checked={data.length > 0 && selected.length === data.length}
                   onChange={handleSelectAllClick}
                   inputProps={{
                     'aria-label': 'select all desserts',
@@ -168,30 +162,31 @@ console.log("checked", ) */
               label="Child 2"
               control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
             /> */}
-        {lineIndex.map((line, index) => {
+        {data.map((line, index) => {
           const isItemSelected = isSelected(line.id);
-          
+
           return (
             <tr
               key={index}
               onClick={event => handleClick(event, line.id)}
               /* role="checkbox" */
               /* aria-checked={isItemSelected} */
-              tabIndex={-1}
-              /* key={lineIndex.name} */
+              /* tabIndex={-1} */
+              /* key={data.name} */
               selected={isItemSelected}
             >
-              {
-                <td>
-                  <CheckboxMUI
-                    checked={isItemSelected}
-                    /* onChange={event =>
+              <td>
+              <div>  <CheckboxMUI
+                  checked={isItemSelected}
+                  
+                  /* onChange={event =>
                           handleClick(event, line.name)
                         }  */
-                    /* onChange={handleChange3} */
-                  />
-                </td>
-              }
+                  /* onChange={handleChange3} */
+                /></div>
+              </td>
+
+              <td>{line.id}</td>
             </tr>
           );
         })}

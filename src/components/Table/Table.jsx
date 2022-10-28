@@ -2,7 +2,7 @@ import { TableBody } from './TableBody';
 
 import { Container, ButtonsContainer, Button,ButtonItemGreen,ButtonItemRed,ButtonItemViolet, TableHero } from './Table.styled';
 
-export default function Table() {
+export default function Table({dataTable}) {
   return (
     <Container>
       <ButtonsContainer>
@@ -11,7 +11,7 @@ export default function Table() {
         <Button type="button">Записаны: <ButtonItemViolet> {0} шт.</ButtonItemViolet></Button>
       </ButtonsContainer>
       <TableHero>
-        <TableBody />
+        <TableBody data={dataTable} />
       </TableHero>
     </Container>
   );

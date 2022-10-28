@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import SideBar from '../components/SideBar/SideBar';
 import Table from '../components/Table/Table';
@@ -14,18 +14,17 @@ export default function HomePage() {
   const [dataTable, setDataTable] = useState([]);
 
   useEffect(() => {
-   fetchAPI().then(result => setDataTable(result) )
-   
+    fetchAPI().then(result => setDataTable(result.customer_satellites));
   }, []);
 
   /* const a = fetch();
   console.log(a); */
-  console.log(dataTable)
+  console.log(dataTable);
   return (
     <Container>
       <SideBar />
       {/* <Form /> */}
-      <Table dataTable={dataTable}/>
+      <Table dataTable={dataTable} />
       {/* {data.row && <MatrixTable />} */}
     </Container>
   );
