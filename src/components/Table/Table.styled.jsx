@@ -70,14 +70,25 @@ export const ButtonItemViolet = styled.span`
 `;
 
 export const TableHero = styled.table`
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   margin: auto;
+  border-spacing:  0 5px;
+  
 `;
 
 export const TableHeadRow = styled.tr`
   display: flex;
   padding: 12px 14px;
   background: #5a8fff10; // 20 - aльфа канал який додає прозорість
+  border-radius: 5px;
+`;
+
+export const TableBodyRow = styled.tr`
+  display: flex;
+  justify-content: baseline;
+  padding: 5px 14px;
+  background: ${({ theme: { colors } }) => colors.$white};
+  /* background: #5a8fff10; */ // 20 - aльфа канал який додає прозорість
   border-radius: 5px;
 `;
 
@@ -92,6 +103,8 @@ export const FormControlLabelMUI = withStyles({
     padding: 0,
   },
 })(FormControlLabel);
+
+
 
 export const CheckboxMUI = withStyles({
   root: {

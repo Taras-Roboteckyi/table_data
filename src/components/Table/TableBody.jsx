@@ -9,7 +9,7 @@ import filterImg from '../../images/filter-right.png';
 
 /* import {fetchAPI} from "../../services/isroAPI" */
 
-import { CheckboxMUI, FormControlLabelMUI } from './Table.styled';
+import { CheckboxMUI, FormControlLabelMUI,TableBodyRow } from './Table.styled';
 
 import {
   TableHeadRow,
@@ -166,7 +166,7 @@ console.log("checked", ) */
           const isItemSelected = isSelected(line.id);
 
           return (
-            <tr
+            <TableBodyRow
               key={index}
               onClick={event => handleClick(event, line.id)}
               /* role="checkbox" */
@@ -176,18 +176,23 @@ console.log("checked", ) */
               selected={isItemSelected}
             >
               <td>
-              <div>  <CheckboxMUI
-                  checked={isItemSelected}
-                  
-                  /* onChange={event =>
+              <FormControlLabelMUI
+              /* label="Parent" */
+              control={
+                  <CheckboxMUI
+                    checked={isItemSelected}
+
+                    /* onChange={event =>
                           handleClick(event, line.name)
                         }  */
-                  /* onChange={handleChange3} */
-                /></div>
+                    /* onChange={handleChange3} */
+                  />
+                      }
+                />
               </td>
 
               <td>{line.id}</td>
-            </tr>
+            </TableBodyRow>
           );
         })}
       </tbody>
