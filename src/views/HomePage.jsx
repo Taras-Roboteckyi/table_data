@@ -17,8 +17,14 @@ export default function HomePage() {
     fetchAPI().then(result => setDataTable(result.customer_satellites));
   }, []);
 
-  /* const a = fetch();
-  console.log(a); */
+  //Змінююєм формат дати з 26-06-2022 на 26.06.2022 
+  dataTable.map(item => {
+    item.launch_date = item.launch_date.replace('-', '.').replace('-', '.');
+    
+    
+    return item;
+  });
+
   console.log(dataTable);
   return (
     <Container>

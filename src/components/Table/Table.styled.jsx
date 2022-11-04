@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -72,19 +72,19 @@ export const ButtonItemViolet = styled.span`
 export const TableHero = styled.table`
   /* border-collapse: collapse; */
   margin: auto;
-  border-spacing:  0 5px;
-  
+  border-spacing: 0 5px;
 `;
 
 export const TableHeadRow = styled.tr`
   display: flex;
   padding: 12px 14px;
-  background: #5a8fff10; // 20 - aльфа канал який додає прозорість
+  background: #5a8fff10; // 10 - aльфа канал який додає прозорість
   border-radius: 5px;
 `;
 
 export const TableBodyRow = styled.tr`
   display: flex;
+  align-items: center;
   justify-content: baseline;
   padding: 5px 14px;
   background: ${({ theme: { colors } }) => colors.$white};
@@ -103,8 +103,6 @@ export const FormControlLabelMUI = withStyles({
     padding: 0,
   },
 })(FormControlLabel);
-
-
 
 export const CheckboxMUI = withStyles({
   root: {
@@ -151,6 +149,22 @@ export const ImgFilter = styled.img`
   width: 16px;
 `;
 
+/////////TABLE BODY///////////////
+
+const TdStyles = css`
+  font-style: normal;
+  font-weight: 300;
+  font-size: ${({ theme: { fontSize } }) => fontSize.montsSize};
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: ${({ theme: { colors } }) => colors.$$black};
+`;
+
+
+export const ProductItem = styled.td`
+  ${TdStyles}
+  margin-left: 14px;
+`;
 /* export const TransactionRow = styled.tr`
   position: relative;
 

@@ -9,7 +9,7 @@ import filterImg from '../../images/filter-right.png';
 
 /* import {fetchAPI} from "../../services/isroAPI" */
 
-import { CheckboxMUI, FormControlLabelMUI,TableBodyRow } from './Table.styled';
+import { CheckboxMUI, FormControlLabelMUI, TableBodyRow,ProductItem } from './Table.styled';
 
 import {
   TableHeadRow,
@@ -176,22 +176,33 @@ console.log("checked", ) */
               selected={isItemSelected}
             >
               <td>
-              <FormControlLabelMUI
-              /* label="Parent" */
-              control={
-                  <CheckboxMUI
-                    checked={isItemSelected}
+                <FormControlLabelMUI
+                  /* label="Parent" */
+                  control={
+                    <CheckboxMUI
+                      checked={isItemSelected}
 
-                    /* onChange={event =>
+                      /* onChange={event =>
                           handleClick(event, line.name)
                         }  */
-                    /* onChange={handleChange3} */
-                  />
-                      }
+                      /* onChange={handleChange3} */
+                    />
+                  }
                 />
               </td>
-
-              <td>{line.id}</td>
+              <ProductItem>
+                {line.launch_date} 
+                 <span>{line.time.toTimeString().slice(0, 5)}</span>
+              </ProductItem>
+              <ProductItem>{line.launcher}</ProductItem>
+              <ProductItem>{line.id}</ProductItem>
+              <ProductItem>{line.country}</ProductItem>
+              <ProductItem>{line.mass}$</ProductItem>
+              <ProductItem>{line.id}</ProductItem>
+              <ProductItem>{line.status}</ProductItem>
+              <ProductItem>{line.comment}</ProductItem>
+              <td><ImgFilter src={filterImg} alt="filter" width={'10px'} /></td>
+              
             </TableBodyRow>
           );
         })}
