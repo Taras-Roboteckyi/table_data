@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import EllipsisText from 'react-ellipsis-text'; /* Якщо довгий тескт - скорочує його і ставить ... */
 
 /* import FormControlLabel from '@material-ui/core/FormControlLabel'; */
 /* import Checkbox from '@material-ui/core/Checkbox'; */
@@ -9,7 +10,16 @@ import filterImg from '../../images/filter-right.png';
 
 /* import {fetchAPI} from "../../services/isroAPI" */
 
-import { CheckboxMUI, FormControlLabelMUI, TableBodyRow,ProductItem } from './Table.styled';
+import {
+  CheckboxMUI,
+  FormControlLabelMUI,
+  TableBodyRow,
+  DataItem,
+  Time,
+  Number,
+  Stock,
+  Provider,Sum
+} from './Table.styled';
 
 import {
   TableHeadRow,
@@ -190,19 +200,22 @@ console.log("checked", ) */
                   }
                 />
               </td>
-              <ProductItem>
-                {line.launch_date} 
-                 <span>{line.time.toTimeString().slice(0, 5)}</span>
-              </ProductItem>
-              <ProductItem>{line.launcher}</ProductItem>
-              <ProductItem>{line.id}</ProductItem>
-              <ProductItem>{line.country}</ProductItem>
-              <ProductItem>{line.mass}$</ProductItem>
-              <ProductItem>{line.id}</ProductItem>
-              <ProductItem>{line.status}</ProductItem>
-              <ProductItem>{line.comment}</ProductItem>
-              <td><ImgFilter src={filterImg} alt="filter" width={'10px'} /></td>
-              
+              <DataItem>
+                {line.launch_date}
+                <Time>{line.time.toTimeString().slice(0, 5)}</Time>
+              </DataItem>
+              <Number>{line.launcher}</Number>
+              <Stock>
+                <EllipsisText text={line.id} length={8} tooltip={'true'} /> 
+              </Stock>
+              <Provider><EllipsisText text={line.country} length={12} tooltip={'true'} /></Provider>
+              <Sum>{line.mass}$</Sum>
+              <td>{line.id}</td>
+              <td>{line.status}</td>
+              <td>{line.comment}</td>
+              <td>
+                <ImgFilter src={filterImg} alt="filter" width={'10px'} />
+              </td>
             </TableBodyRow>
           );
         })}

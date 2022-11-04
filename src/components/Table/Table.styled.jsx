@@ -152,6 +152,7 @@ export const ImgFilter = styled.img`
 /////////TABLE BODY///////////////
 
 const TdStyles = css`
+  padding-top: 5px;
   font-style: normal;
   font-weight: 300;
   font-size: ${({ theme: { fontSize } }) => fontSize.montsSize};
@@ -160,10 +161,37 @@ const TdStyles = css`
   color: ${({ theme: { colors } }) => colors.$$black};
 `;
 
-
-export const ProductItem = styled.td`
+export const DataItem = styled.td`
   ${TdStyles}
   margin-left: 14px;
+
+  width: 100px;
+`;
+
+export const Time = styled.span`
+  padding-left: 5px;
+`;
+export const Number = styled.td`
+  ${TdStyles}
+  margin-left: 18px;
+  width: 65px;
+`;
+
+export const Stock = styled.td`
+  ${TdStyles}
+  margin-left: 10px;
+  width: 60px;
+`;
+
+export const Provider = styled.td`
+  ${TdStyles}
+  margin-left: 18px;
+  width: 95px;
+`;
+export const Sum = styled.td`
+  ${TdStyles}
+  margin-left: 18px;
+  /* width: 80px; */
 `;
 /* export const TransactionRow = styled.tr`
   position: relative;
