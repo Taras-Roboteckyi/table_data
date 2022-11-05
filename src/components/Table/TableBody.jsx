@@ -18,7 +18,7 @@ import {
   Time,
   Number,
   Stock,
-  Provider,Sum
+  Provider,Sum,Responsible,Status,Comment
 } from './Table.styled';
 
 import {
@@ -210,9 +210,9 @@ console.log("checked", ) */
               </Stock>
               <Provider><EllipsisText text={line.country} length={12} tooltip={'true'} /></Provider>
               <Sum>{line.mass}$</Sum>
-              <td>{line.id}</td>
-              <td>{line.status}</td>
-              <td>{line.comment}</td>
+              <Responsible><EllipsisText text={line.country} length={12} tooltip={'true'} /></Responsible>
+              <Status>{line.status}</Status>
+              <Comment>{line.comment}</Comment>
               <td>
                 <ImgFilter src={filterImg} alt="filter" width={'10px'} />
               </td>

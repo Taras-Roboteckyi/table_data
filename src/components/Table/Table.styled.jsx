@@ -191,7 +191,24 @@ export const Provider = styled.td`
 export const Sum = styled.td`
   ${TdStyles}
   margin-left: 18px;
-  /* width: 80px; */
+  width: 50px;
+`;
+export const Responsible = styled.td`
+  ${TdStyles}
+  margin-left: 18px;
+  width: 115px;
+`;
+
+
+export const Status = styled.td`
+  ${TdStyles}
+  margin-left: 18px;
+  width: 100px;
+`;
+export const Comment = styled.td`
+  ${TdStyles}
+  margin-left: 18px;
+  width: 170px;
 `;
 /* export const TransactionRow = styled.tr`
   position: relative;
