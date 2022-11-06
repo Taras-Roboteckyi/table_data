@@ -7,6 +7,7 @@ import EllipsisText from 'react-ellipsis-text'; /* Якщо довгий тес�
 import arrowDown from '../../images/arrow-down.png';
 import arrowUp from '../../images/arrow-up.png';
 import filterImg from '../../images/filter-right.png';
+import check from "../../images/bi_check2.png"
 
 /* import {fetchAPI} from "../../services/isroAPI" */
 
@@ -18,7 +19,7 @@ import {
   Time,
   Number,
   Stock,
-  Provider,Sum,Responsible,Status,Comment
+  Provider,Sum,Responsible,Status,ImgCheck,Comment
 } from './Table.styled';
 
 import {
@@ -187,15 +188,12 @@ console.log("checked", ) */
             >
               <td>
                 <FormControlLabelMUI
-                  /* label="Parent" */
+                  //label="Parent"
                   control={
                     <CheckboxMUI
                       checked={isItemSelected}
 
-                      /* onChange={event =>
-                          handleClick(event, line.name)
-                        }  */
-                      /* onChange={handleChange3} */
+                     
                     />
                   }
                 />
@@ -206,12 +204,14 @@ console.log("checked", ) */
               </DataItem>
               <Number>{line.launcher}</Number>
               <Stock>
-                <EllipsisText text={line.id} length={8} tooltip={'true'} /> 
+                <EllipsisText text={line.id} length={7} tooltip={'true'} /> 
               </Stock>
               <Provider><EllipsisText text={line.country} length={12} tooltip={'true'} /></Provider>
               <Sum>{line.mass}$</Sum>
               <Responsible><EllipsisText text={line.country} length={12} tooltip={'true'} /></Responsible>
-              <Status>{line.status}</Status>
+              <Status>{line.status}
+                <ImgCheck src={check} alt="check" /* width={'10px'} *//>
+                </Status>
               <Comment>{line.comment}</Comment>
               <td>
                 <ImgFilter src={filterImg} alt="filter" width={'10px'} />

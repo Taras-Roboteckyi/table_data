@@ -3,6 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+
+
+
 export const Container = styled.div`
   padding: 0px 25px;
 `;
@@ -82,15 +85,7 @@ export const TableHeadRow = styled.tr`
   border-radius: 5px;
 `;
 
-export const TableBodyRow = styled.tr`
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-  padding: 5px 14px;
-  background: ${({ theme: { colors } }) => colors.$white};
-  /* background: #5a8fff10; */ // 20 - aльфа канал який додає прозорість
-  border-radius: 5px;
-`;
+
 
 export const TableHeadCheckboxItem = styled.th`
   /* margin-left: 14px; */
@@ -151,6 +146,16 @@ export const ImgFilter = styled.img`
 
 /////////TABLE BODY///////////////
 
+export const TableBodyRow = styled.tr`
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  padding: 5px 14px;
+  background: ${({ theme: { colors } }) => colors.$white};
+  /* background: #5a8fff10; */ // 20 - aльфа канал який додає прозорість
+  border-radius: 5px;
+`;
+
 const TdStyles = css`
   padding-top: 5px;
   font-style: normal;
@@ -158,18 +163,20 @@ const TdStyles = css`
   font-size: ${({ theme: { fontSize } }) => fontSize.montsSize};
   line-height: 1.21;
   letter-spacing: 0.04em;
-  color: ${({ theme: { colors } }) => colors.$$black};
+  color: ${({ theme: { colors } }) => colors.$black};
 `;
 
 export const DataItem = styled.td`
   ${TdStyles}
   margin-left: 14px;
-
+  font-weight: 400;
   width: 100px;
 `;
 
 export const Time = styled.span`
   padding-left: 5px;
+  font-weight: 400;
+  color: ${({ theme: { colors } }) => colors.$lightGrey};
 `;
 export const Number = styled.td`
   ${TdStyles}
@@ -179,6 +186,7 @@ export const Number = styled.td`
 
 export const Stock = styled.td`
   ${TdStyles}
+  font-weight: 400;
   margin-left: 10px;
   width: 60px;
 `;
@@ -190,8 +198,9 @@ export const Provider = styled.td`
 `;
 export const Sum = styled.td`
   ${TdStyles}
+  font-weight: 400;
   margin-left: 18px;
-  width: 50px;
+  width: 55px;
 `;
 export const Responsible = styled.td`
   ${TdStyles}
@@ -202,11 +211,19 @@ export const Responsible = styled.td`
 
 export const Status = styled.td`
   ${TdStyles}
+  display: flex;
   margin-left: 18px;
   width: 100px;
+
 `;
+
+export const ImgCheck = styled.img`
+margin-left: 5px;
+`
+
 export const Comment = styled.td`
   ${TdStyles}
+  font-weight: 400;
   margin-left: 18px;
   width: 170px;
 `;
