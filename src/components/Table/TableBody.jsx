@@ -35,6 +35,10 @@ import {
 export function TableBody({ data }) {
   const [selected, setSelected] = useState([]);
 
+const conducted = "Проведен"
+const deleteRow = "Удалить"
+const recorded = "Записан"
+
   console.log(data);
   //////рендер масиву /////////
   /*  const data = [
@@ -209,9 +213,9 @@ console.log("checked", ) */
               <Provider><EllipsisText text={line.country} length={12} tooltip={'true'} /></Provider>
               <Sum>{line.mass}$</Sum>
               <Responsible><EllipsisText text={line.country} length={12} tooltip={'true'} /></Responsible>
-              <Status>{line.status}
+              {line.status===conducted && <Status>{line.status}
                 <ImgCheck src={check} alt="check" /* width={'10px'} *//>
-                </Status>
+                </Status>}
               <Comment>{line.comment}</Comment>
               <td>
                 <ImgFilter src={filterImg} alt="filter" width={'10px'} />
