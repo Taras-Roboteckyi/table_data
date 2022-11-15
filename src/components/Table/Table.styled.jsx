@@ -151,9 +151,14 @@ export const TableBodyRow = styled.tr`
   align-items: center;
   justify-content: baseline;
   padding: 5px 14px;
+  margin-bottom: 12px;
   background: ${({ theme: { colors } }) => colors.$white};
   /* background: #5a8fff10; */ // 20 - aльфа канал який додає прозорість
   border-radius: 5px;
+  cursor: pointer;
+  &:first-child{
+    margin-top: 8px;
+  }
 `;
 
 const TdStyles = css`
@@ -209,16 +214,44 @@ export const Responsible = styled.td`
 `;
 
 
-export const Status = styled.td`
+export const StatusСonducted = styled.td`
   ${TdStyles}
   display: flex;
   margin-left: 18px;
   width: 100px;
+  background: ${({ theme: { colors } }) => colors.$green};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+`;
 
+export const StatusDelete = styled.td`
+  ${TdStyles}
+  display: flex;
+  margin-left: 18px;
+  width: 100px;
+  padding-top: 6px;
+  background: ${({ theme: { colors } }) => colors.$red};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+`;
+
+export const StatusRecorded = styled.td`
+  ${TdStyles}
+  display: flex;
+  margin-left: 18px;
+  width: 100px;
+  padding-top: 6px;
+  background: ${({ theme: { colors } }) => colors.$violet};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
 export const ImgCheck = styled.img`
 margin-left: 5px;
+
 `
 
 export const Comment = styled.td`

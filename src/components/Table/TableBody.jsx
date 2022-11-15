@@ -7,7 +7,9 @@ import EllipsisText from 'react-ellipsis-text'; /* Якщо довгий тес�
 import arrowDown from '../../images/arrow-down.png';
 import arrowUp from '../../images/arrow-up.png';
 import filterImg from '../../images/filter-right.png';
-import check from "../../images/bi_check2.png"
+import check from '../../images/bi_check2.png';
+import deleteImg from "../../images/bi_x.png"
+import pin from "../../images/bi_pin-angle.png"
 
 /* import {fetchAPI} from "../../services/isroAPI" */
 
@@ -19,7 +21,14 @@ import {
   Time,
   Number,
   Stock,
-  Provider,Sum,Responsible,Status,ImgCheck,Comment
+  Provider,
+  Sum,
+  Responsible,
+  StatusСonducted,
+  StatusDelete,
+  StatusRecorded,
+  ImgCheck,
+  Comment,
 } from './Table.styled';
 
 import {
@@ -35,9 +44,9 @@ import {
 export function TableBody({ data }) {
   const [selected, setSelected] = useState([]);
 
-const conducted = "Проведен"
-const deleteRow = "Удалить"
-const recorded = "Записан"
+  const conducted = 'Проведен';
+  const deleteRow = 'Удалить';
+  const recorded = 'Записан';
 
   console.log(data);
   //////рендер масиву /////////
@@ -193,13 +202,7 @@ console.log("checked", ) */
               <td>
                 <FormControlLabelMUI
                   //label="Parent"
-                  control={
-                    <CheckboxMUI
-                      checked={isItemSelected}
-
-                     
-                    />
-                  }
+                  control={<CheckboxMUI checked={isItemSelected} />}
                 />
               </td>
               <DataItem>
@@ -208,14 +211,33 @@ console.log("checked", ) */
               </DataItem>
               <Number>{line.launcher}</Number>
               <Stock>
-                <EllipsisText text={line.id} length={7} tooltip={'true'} /> 
+                <EllipsisText text={line.id} length={7} tooltip={'true'} />
               </Stock>
-              <Provider><EllipsisText text={line.country} length={12} tooltip={'true'} /></Provider>
+              <Provider>
+                <EllipsisText text={line.country} length={12} tooltip={'true'} />
+              </Provider>
               <Sum>{line.mass}$</Sum>
-              <Responsible><EllipsisText text={line.country} length={12} tooltip={'true'} /></Responsible>
-              {line.status===conducted && <Status>{line.status}
-                <ImgCheck src={check} alt="check" /* width={'10px'} *//>
-                </Status>}
+              <Responsible>
+                <EllipsisText text={line.country} length={12} tooltip={'true'} />
+              </Responsible>
+              {line.status === conducted && (
+                <StatusСonducted>
+                  {line.status}
+                  <ImgCheck src={check} alt="check"  />
+                </StatusСonducted>
+              )}
+              {line.status === deleteRow && (
+                <StatusDelete>
+                  {line.status}
+                  <ImgCheck src={deleteImg} alt="cross" width={'17px'} />
+                </StatusDelete>
+              )}
+              {line.status === recorded && (
+                <StatusRecorded>
+                  {line.status}
+                  <ImgCheck src={pin} alt="pin" width={'13px'} />
+                </StatusRecorded>
+              )}
               <Comment>{line.comment}</Comment>
               <td>
                 <ImgFilter src={filterImg} alt="filter" width={'10px'} />
