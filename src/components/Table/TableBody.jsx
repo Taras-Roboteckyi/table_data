@@ -8,8 +8,8 @@ import arrowDown from '../../images/arrow-down.png';
 import arrowUp from '../../images/arrow-up.png';
 import filterImg from '../../images/filter-right.png';
 import check from '../../images/bi_check2.png';
-import deleteImg from "../../images/bi_x.png"
-import pin from "../../images/bi_pin-angle.png"
+import deleteImg from '../../images/bi_x.png';
+import pin from '../../images/bi_pin-angle.png';
 
 /* import {fetchAPI} from "../../services/isroAPI" */
 
@@ -126,6 +126,8 @@ console.log("checked", ) */
     setChecked([event.target.checked]);
   }; */
 
+
+
   return (
     <>
       <thead>
@@ -186,66 +188,68 @@ console.log("checked", ) */
               label="Child 2"
               control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
             /> */}
-        {data.map((line, index) => {
-          const isItemSelected = isSelected(line.id);
+        {data &&
+          data.map((line, index) => {
+            const isItemSelected = isSelected(line.id);
 
-          return (
-            <TableBodyRow
-              key={index}
-              onClick={event => handleClick(event, line.id)}
-              /* role="checkbox" */
-              /* aria-checked={isItemSelected} */
-              /* tabIndex={-1} */
-              /* key={data.name} */
-              selected={isItemSelected}
-            >
-              <td>
-                <FormControlLabelMUI
-                  //label="Parent"
-                  control={<CheckboxMUI checked={isItemSelected} />}
-                />
-              </td>
-              <DataItem>
-                {line.launch_date}
-                <Time>{line.time.toTimeString().slice(0, 5)}</Time>
-              </DataItem>
-              <Number>{line.launcher}</Number>
-              <Stock>
-                <EllipsisText text={line.id} length={7} tooltip={'true'} />
-              </Stock>
-              <Provider>
-                <EllipsisText text={line.country} length={12} tooltip={'true'} />
-              </Provider>
-              <Sum>{line.mass}$</Sum>
-              <Responsible>
-                <EllipsisText text={line.country} length={12} tooltip={'true'} />
-              </Responsible>
-              {line.status === conducted && (
-                <StatusСonducted>
-                  {line.status}
-                  <ImgCheck src={check} alt="check"  />
-                </StatusСonducted>
-              )}
-              {line.status === deleteRow && (
-                <StatusDelete>
-                  {line.status}
-                  <ImgCheck src={deleteImg} alt="cross" width={'17px'} />
-                </StatusDelete>
-              )}
-              {line.status === recorded && (
-                <StatusRecorded>
-                  {line.status}
-                  <ImgCheck src={pin} alt="pin" width={'13px'} />
-                </StatusRecorded>
-              )}
-              <Comment>{line.comment}</Comment>
-              <td>
-                <ImgFilter src={filterImg} alt="filter" width={'10px'} />
-              </td>
-            </TableBodyRow>
-          );
-        })}
+            return (
+              <TableBodyRow
+                key={index}
+                onClick={event => handleClick(event, line.id)}
+                /* role="checkbox" */
+                /* aria-checked={isItemSelected} */
+                /* tabIndex={-1} */
+                /* key={data.name} */
+                selected={isItemSelected}
+              >
+                <td>
+                  <FormControlLabelMUI
+                    //label="Parent"
+                    control={<CheckboxMUI checked={isItemSelected} />}
+                  />
+                </td>
+                <DataItem>
+                  {line.launch_date}
+                  <Time>{line.time.toTimeString().slice(0, 5)}</Time>
+                </DataItem>
+                <Number>{line.launcher}</Number>
+                <Stock>
+                  <EllipsisText text={line.id} length={7} tooltip={'true'} />
+                </Stock>
+                <Provider>
+                  <EllipsisText text={line.country} length={12} tooltip={'true'} />
+                </Provider>
+                <Sum>{line.mass}$</Sum>
+                <Responsible>
+                  <EllipsisText text={line.country} length={12} tooltip={'true'} />
+                </Responsible>
+                {line.status === conducted && (
+                  <StatusСonducted>
+                    {line.status}
+                    <ImgCheck src={check} alt="check" />
+                  </StatusСonducted>
+                )}
+                {line.status === deleteRow && (
+                  <StatusDelete>
+                    {line.status}
+                    <ImgCheck src={deleteImg} alt="cross" width={'17px'} />
+                  </StatusDelete>
+                )}
+                {line.status === recorded && (
+                  <StatusRecorded>
+                    {line.status}
+                    <ImgCheck src={pin} alt="pin" width={'13px'} />
+                  </StatusRecorded>
+                )}
+                <Comment>{line.comment}</Comment>
+                <td>
+                  <ImgFilter src={filterImg} alt="filter" width={'10px'} />
+                </td>
+              </TableBodyRow>
+            );
+          })}
       </tbody>
+     
     </>
   );
 }

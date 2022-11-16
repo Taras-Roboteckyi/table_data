@@ -75,7 +75,7 @@ export const ButtonItemViolet = styled.span`
 export const TableHero = styled.table`
   /* border-collapse: collapse; */
   margin: auto;
-  border-spacing: 0 5px;
+  border-spacing: 0 5px;  //змінює рядки на окремі вкладення
 `;
 
 export const TableHeadRow = styled.tr`
