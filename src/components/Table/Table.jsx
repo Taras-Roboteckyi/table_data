@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import ReactPaginate from 'react-paginate';
+
 
 import { TableBody } from './TableBody';
 
-import { Container, ButtonsContainer, Button,ButtonItemGreen,ButtonItemRed,ButtonItemViolet, TableHero } from './Table.styled';
+import { Container, ButtonsContainer, Button,ButtonItemGreen,ButtonItemRed,ButtonItemViolet, TableHero, MyPaginate } from './Table.styled';
 
 export default function Table({dataTable}) {
 
@@ -13,7 +13,8 @@ export default function Table({dataTable}) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 6;
+  const itemsPerPage = 12;  //12 відображаються в інтерфейсі
+  
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
   // from an API endpoint with useEffect and useState)
@@ -40,14 +41,16 @@ export default function Table({dataTable}) {
       <TableHero>
         <TableBody data={currentItems} />
       </TableHero>
-      <ReactPaginate
+      <MyPaginate
+      
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="След >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="< Пред"
         renderOnZeroPageCount={null}
+        pageLinkClassName="page-link"
       />
     </Container>
   );
