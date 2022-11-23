@@ -270,12 +270,13 @@ export const MyPaginate = styled(ReactPaginate).attrs({
   margin-bottom: 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   list-style-type: none;
   padding: 0 20px;
   li a {
     /* border-radius: 7px; */
-    padding: 0.1rem 1rem;
+    padding: 6px 30px;
+    color: ${({ theme: { colors } }) => colors.$blue};
     /* border: gray 1px solid; */
     cursor: pointer;
   }
@@ -289,7 +290,7 @@ export const MyPaginate = styled(ReactPaginate).attrs({
     background-color: rgba(90, 143, 255, 0.1);
     border-radius: 3px;
     border-color: transparent;
-    color: ${({ theme: { colors } }) => colors.$blue}
+    color: ${({ theme: { colors } }) => colors.$blue};
     min-width: 10px;
   }
   li.disabled a {
