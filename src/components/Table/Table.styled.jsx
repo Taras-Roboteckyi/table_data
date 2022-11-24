@@ -76,6 +76,7 @@ export const TableHero = styled.table`
   /* border-collapse: collapse; */
   margin: auto;
   border-spacing: 0 5px;  //змінює рядки на окремі вкладення
+  overscroll-behavior-y: contain;
 `;
 
 export const TableHeadRow = styled.tr`
@@ -272,10 +273,11 @@ export const MyPaginate = styled(ReactPaginate).attrs({
   flex-direction: row;
   justify-content: center;
   list-style-type: none;
-  padding: 0 20px;
+  padding: 0 10px;
   li a {
     /* border-radius: 7px; */
-    padding: 6px 30px;
+    padding: 6px 10px;
+    margin-right: 10px;
     color: ${({ theme: { colors } }) => colors.$blue};
     /* border: gray 1px solid; */
     cursor: pointer;

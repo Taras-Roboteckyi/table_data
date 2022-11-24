@@ -5,4 +5,5 @@ export const Container = styled.section`
   width: 1400px;
   padding: 50px 100px;
   display: flex;
+ 
 `;
