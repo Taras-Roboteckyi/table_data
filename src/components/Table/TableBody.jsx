@@ -48,7 +48,7 @@ export function TableBody({ data }) {
   const deleteRow = 'Удалить';
   const recorded = 'Записан';
 
-  console.log(data);
+  /* console.log(data); */
   //////рендер масиву /////////
   /*  const data = [
     {
@@ -125,8 +125,6 @@ console.log("checked", ) */
   const handleChange3 = event => {
     setChecked([event.target.checked]);
   }; */
-
-
 
   return (
     <>
@@ -249,7 +247,6 @@ console.log("checked", ) */
             );
           })}
       </tbody>
-     
     </>
   );
 }
