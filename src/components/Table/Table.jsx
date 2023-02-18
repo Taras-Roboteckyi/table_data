@@ -43,14 +43,19 @@ export default function Table({ dataTable }) {
   const conductedFilter = dataTable.filter(el => el.status === conducted);
   const deleteFilter = dataTable.filter(el => el.status === deleteRow);
 
-  const arr = dataTable.map(el => {
-    let arrayList = 0;
-    if (el.status === conducted) {
-      arrayList += 1;
-      /*  ({ statusConducted:  }); */
-    }
-    return arrayList;
-  });
+  const arr = dataTable
+    .map(el => {
+      let arrayList = [];
+      if (el.status === conducted) {
+        arrayList = [el.status];
+      } else if (el.status === deleteRow) {
+        arrayList.push({
+          statusDelete: el.status,
+        });
+      }
+      return arrayList;
+    })
+    .flatMap(item => item);
 
   console.log('arr,', arr);
 
