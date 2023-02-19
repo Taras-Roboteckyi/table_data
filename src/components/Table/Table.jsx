@@ -40,10 +40,11 @@ export default function Table({ dataTable }) {
   const conducted = 'Проведен';
   const deleteRow = 'Удалить';
   const recorded = 'Записан';
-  const conductedFilter = dataTable.filter(el => el.status === conducted);
-  const deleteFilter = dataTable.filter(el => el.status === deleteRow);
+  const conductedFilter = dataTable.filter(el => el.status === conducted).length;
+  const deleteFilter = dataTable.filter(el => el.status === deleteRow).length;
+  const recordedFilter = dataTable.filter(el => el.status === recorded).length;
 
-  const arr = dataTable
+  /* const arr = dataTable
     .map(el => {
       let arrayList = [];
       if (el.status === conducted) {
@@ -57,19 +58,19 @@ export default function Table({ dataTable }) {
     })
     .flatMap(item => item);
 
-  console.log('arr,', arr);
+  console.log('conductedFilter,', conductedFilter); */
 
   return (
     <Container>
       <ButtonsContainer>
         <Button type="button">
-          Проведены: <ButtonItemGreen> {0} шт.</ButtonItemGreen>{' '}
+          Проведены: <ButtonItemGreen> {conductedFilter} шт.</ButtonItemGreen>
         </Button>
         <Button type="button">
-          На удаление: <ButtonItemRed> {0} шт.</ButtonItemRed>
+          На удаление: <ButtonItemRed> {deleteFilter} шт.</ButtonItemRed>
         </Button>
         <Button type="button">
-          Записаны: <ButtonItemViolet> {0} шт.</ButtonItemViolet>
+          Записаны: <ButtonItemViolet> {recordedFilter} шт.</ButtonItemViolet>
         </Button>
       </ButtonsContainer>
       <TableHero>
