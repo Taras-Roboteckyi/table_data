@@ -44,21 +44,29 @@ export default function Table({ dataTable }) {
   const deleteFilter = dataTable.filter(el => el.status === deleteRow).length;
   const recordedFilter = dataTable.filter(el => el.status === recorded).length;
 
-  /* const arr = dataTable
-    .map(el => {
-      let arrayList = [];
-      if (el.status === conducted) {
-        arrayList = [el.status];
-      } else if (el.status === deleteRow) {
-        arrayList.push({
-          statusDelete: el.status,
-        });
-      }
-      return arrayList;
-    })
-    .flatMap(item => item);
+  const arr = dataTable.map(el => {
+    let conductedFilter = [];
+    let deleteFilter = [];
+    let recordedFilter = [];
+    if (el.status === conducted) {
+      conductedFilter = [el.status];
+    }
+    if (el.status === deleteRow) {
+      deleteFilter.push(el.status);
+    }
+    if (el.status === recorded) {
+      recordedFilter = [...recordedFilter, el.status];
+    }
 
-  console.log('conductedFilter,', conductedFilter); */
+    return {
+      conductedArray: conductedFilter,
+      deleteArray: deleteFilter,
+      recordedArray: recordedFilter,
+    };
+  });
+  /* .flatMap(item => item); */
+
+  console.log('arr,', arr);
 
   return (
     <Container>
